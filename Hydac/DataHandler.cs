@@ -59,22 +59,6 @@ namespace Hydac
                 input = reader.ReadLine();
 
             }
-            /*
-            string[] personArray = input.Split(';');
-
-            string Name = personArray[0];
-            DateTime BirthDate = DateTime.Parse(personArray[1]);
-            double Height = double.Parse(personArray[2]);
-            bool IsMarried = bool.Parse(personArray[3]);
-            int NoOfChildren = int.Parse(personArray[4]);
-            
-            //GuestList returnPerson = new GuestList(Name, BirthDate, Height, IsMarried, NoOfChildren);
-            //return returnPerson;
-            
-            Person returnPerson = new Person(
-                personArray[0], DateTime.Parse(personArray[1]), double.Parse(personArray[2]), bool.Parse(personArray[3]), int.Parse(personArray[4])
-                 );
-            */
             return savedGuests;
             
         }
