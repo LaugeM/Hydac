@@ -13,7 +13,7 @@ namespace Hydac
         {
             this.Title = menuTitle;
         }
-        private int ItemCount = 0;
+        private int ItemCount = 1;
         private MenuItem[] MenuItems = new MenuItem[10];
 
 
@@ -28,7 +28,8 @@ namespace Hydac
         public void Show()
         {
             Console.WriteLine(Title);
-            for (int i = 0; i < ItemCount; i++)
+            Console.WriteLine("0. Tilbage");
+            for (int i = 1; i < ItemCount; i++)
             {
                 Console.WriteLine(MenuItems[i].Title);
             }
@@ -45,7 +46,7 @@ namespace Hydac
                     return userSelection;
                 }
 
-                Console.WriteLine($"Vælg et tal mellem 1 og {this.ItemCount - 1} eller afslut ved at vælge 0.");
+                Console.WriteLine($"Vælg et tal mellem 1 og {this.ItemCount} eller afslut ved at vælge 0.");
 
             }
         }

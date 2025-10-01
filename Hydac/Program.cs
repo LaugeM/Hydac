@@ -6,9 +6,9 @@
         {
             Console.WriteLine("Indtast dine initialer");
             string initialer = Console.ReadLine();
+            GuestList guestList = new GuestList("Gæsteliste");
             Menu mainMenu = new Menu("Hovedmenu");
 
-            mainMenu.AddMenuItem("Tilbage");
             mainMenu.AddMenuItem("Gæster");
             mainMenu.AddMenuItem("Take-Care status");
 
@@ -25,22 +25,27 @@
                         mainStop = true;
                         break;
                     case 1:
-                        Menu guestMenu = new Menu("Gæstemenu");
-                        guestMenu.AddMenuItem("Tilbage");
-                        guestMenu.AddMenuItem("Registrer gæst");
-                        guestMenu.AddMenuItem("Se nuværende gæster");
-                        bool guestStop = false;
-                        while (guestStop == false)
+                        Console.Clear();
+                        Menu regGuestMenu = new Menu("Gæster");
+                        regGuestMenu.AddMenuItem("Registrer gæst");
+                        regGuestMenu.AddMenuItem("Se nuværende gæster");
+                        bool regGuestStop = false;
+                        while (regGuestStop == false)
                         {
                             Console.WriteLine("----------");
-                            guestMenu.Show();
-                            switch (guestMenu.SelectMenuItem())
+                            regGuestMenu.Show();
+                            switch (regGuestMenu.SelectMenuItem())
                             {
                                 case 0:
-                                    guestStop = true;
+                                    regGuestStop = true;
                                     break;
                                 case 1:
-                                    Console.WriteLine("Hej");
+                                    Console.Clear();
+                                    guestList.RegGuestMenu();
+                                    break;
+                                case 2:
+                                    Console.Clear();
+                                    guestList.Show();
                                     break;
                             }
                         }

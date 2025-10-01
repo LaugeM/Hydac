@@ -9,7 +9,6 @@ namespace Hydac
     internal class MenuItem
     {
         public string Title;
-
         public MenuItem(string itemTitle)
         {
             this.Title = itemTitle;
