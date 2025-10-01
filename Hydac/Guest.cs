@@ -12,25 +12,25 @@ namespace Hydac
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Company { get; set; }
-        public string Date { get; set; }
-        public string ArrivalTime { get; set; }
+        public DateTime DateAndTime { get; set; }
         public bool SafetyfolderGiven { get; set; }
+        public string ResponsibleEmployee { get; set; }
 
 
 
-        public Guest(string firstName, string lastName, string company, string date, string arrivalTime, bool safetyfolderGiven)
+        public Guest(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string responsibleEmployee)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Company = company;
-            this.Date = date;
-            this.ArrivalTime = arrivalTime;
+            this.DateAndTime = dateAndTime;
             this.SafetyfolderGiven = safetyfolderGiven;
+            this.ResponsibleEmployee = responsibleEmployee;
         }
 
         public string MakeTitle()
         {
-            return $"{FirstName};{LastName};{Company};{Date};{ArrivalTime};{SafetyfolderGiven}";
+            return $"{FirstName};{LastName};{Company};{DateAndTime.ToString()};{SafetyfolderGiven};{ResponsibleEmployee}";
         }
     }
 }

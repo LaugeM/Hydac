@@ -19,6 +19,15 @@ namespace Hydac
 
         private int guestCount = 1;
         private Guest[] Guests = new Guest[50];
+        public void AddGuestsFromFile()
+        {
+            DataHandler initialHandler = new("GuestList.txt");
+            foreach (Guest g in initialHandler.LoadList())
+            {
+                Guests[guestCount] = g;
+                guestCount++;
+            }
+        }
 
         public void RegGuestMenu()
         {
@@ -56,14 +65,14 @@ namespace Hydac
             Console.WriteLine($"date: {dateAndTime.ToString("dd/mm/yyyy")}");
             Console.WriteLine($"time: {dateAndTime.ToString("HH:mm")}");
 
-            AddGuest(inputFirstName, inputLastName, inputCompany, dateAndTime.ToString("dd/mm/yyyy"), dateAndTime.ToString("HH:mm"), _safetyfolderGiven);
+            AddGuest(inputFirstName, inputLastName, inputCompany, dateAndTime, _safetyfolderGiven, Initials);
             
 
         }
 
-        public void AddGuest(string firstName, string lastName, string company, string date, string arrivalTime, bool safetyfolderGiven)
+        public void AddGuest(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string responsibleEmployee)
         {
-            Guest gu = new Guest(firstName, lastName, company, date, arrivalTime, safetyfolderGiven);
+            Guest gu = new Guest(firstName, lastName, company, dateAndTime, safetyfolderGiven, responsibleEmployee);
             DataHandler handler = new DataHandler("GuestList.txt");
             handler.SaveGuest(gu);
             this.Guests[guestCount] = gu;
@@ -77,10 +86,9 @@ namespace Hydac
             for (int i = 1; i < guestCount; i++)
             {
                 Console.Write(
-                    $"{i}. {Guests[i].FirstName} {Guests[i].LastName} Firma: {Guests[i].Company} Dato: {Guests[i].Date} Ankomst: {Guests[i].ArrivalTime} "
+                    $"{i}. {Guests[i].FirstName} {Guests[i].LastName} Firma: {Guests[i].Company} Dato: {Guests[i].DateAndTime.ToString("dd/mm/yyyy")} Ankomst: {Guests[i].DateAndTime.ToString("HH:mm")} Ansvarlig for besøg: {Guests[i].ResponsibleEmployee} "
                     );
-                switch (Guests[i].SafetyfolderGiven) { case true: Console.Write("Sikkerhedsfolder udleveret "); break; case false: Console.Write("Sikkerhedsfolder ikke udleveret "); break; }
-                Console.WriteLine($"Ansvarlig for besøg: {Initials}");
+                switch (Guests[i].SafetyfolderGiven) { case true: Console.WriteLine("Sikkerhedsfolder udleveret "); break; case false: Console.WriteLine("Sikkerhedsfolder ikke udleveret "); break; }
             }
             Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
             Console.ReadLine();
