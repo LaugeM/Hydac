@@ -50,7 +50,7 @@ namespace Hydac
         
         public Guest[] LoadList()
         {
-            if (TotalLines() < 0)
+            if (TotalLines() > 0)
             {
                 Guest[] savedGuests = new Guest[TotalLines()];
                 using var reader = new StreamReader(DataFileName); // sikrer lukning ved fejl

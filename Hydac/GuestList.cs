@@ -21,6 +21,8 @@ namespace Hydac
         private Guest[] Guests = new Guest[50];
         public void AddGuestsFromFile()
         {
+            Array.Clear(Guests, 0, Guests.Length);
+            guestCount = 1;
             DataHandler initialHandler = new("GuestList.txt");
             foreach (Guest g in initialHandler.LoadList())
             {
@@ -59,11 +61,6 @@ namespace Hydac
             }
 
             var dateAndTime = DateTime.Now;
-            var date = dateAndTime.Date;
-            var time = dateAndTime.TimeOfDay;
-
-            Console.WriteLine($"date: {dateAndTime.ToString("dd/mm/yyyy")}");
-            Console.WriteLine($"time: {dateAndTime.ToString("HH:mm")}");
 
             AddGuest(inputFirstName, inputLastName, inputCompany, dateAndTime, _safetyfolderGiven, Initials);
             
@@ -83,7 +80,7 @@ namespace Hydac
         {
             Console.WriteLine("Gæsteliste:");
             Console.WriteLine("0. Tilbage");
-            if (guestCount <= 1)
+            if (guestCount >= 1)
             {
                 for (int i = 1; i < guestCount; i++)
                 {

@@ -24,15 +24,15 @@
                         mainStop = true;
                         break;
                     case 1:
-                        Menu regGuestMenu = new Menu("Gæster");
-                        regGuestMenu.AddMenuItem("Registrer gæst");
-                        regGuestMenu.AddMenuItem("Se nuværende gæster");
+                        Menu guestMenu = new Menu("Gæster");
+                        guestMenu.AddMenuItem("Registrer gæst");
+                        guestMenu.AddMenuItem("Se nuværende gæster");
                         bool regGuestStop = false;
                         while (regGuestStop == false)
                         {
                             Console.Clear();
-                            regGuestMenu.Show();
-                            switch (regGuestMenu.SelectMenuItem())
+                            guestMenu.Show();
+                            switch (guestMenu.SelectMenuItem())
                             {
                                 case 0:
                                     regGuestStop = true;
