@@ -7,7 +7,6 @@
             Console.WriteLine("Indtast dine initialer");
             string initials = Console.ReadLine();
             GuestList guestList = new GuestList("Gæsteliste", initials);
-            guestList.AddGuestsFromFile();
             Menu mainMenu = new Menu("Hovedmenu");
 
             mainMenu.AddMenuItem("Gæster");
@@ -44,6 +43,7 @@
                                     break;
                                 case 2:
                                     Console.Clear();
+                                    guestList.AddGuestsFromFile();
                                     guestList.Show();
                                     break;
                             }

@@ -50,24 +50,32 @@ namespace Hydac
         
         public Guest[] LoadList()
         {
-            Guest[] savedGuests = new Guest[TotalLines()];
-            using var reader = new StreamReader(DataFileName); // sikrer lukning ved fejl
-            string input = reader.ReadLine();
-            int guestNumber = 0;
-            while (input != null)
+            if (TotalLines() < 0)
             {
-                string[] guestArray = input.Split(';');
-                Guest readGuest = new(
-                guestArray[0], guestArray[1], guestArray[2], DateTime.Parse(guestArray[3]), bool.Parse(guestArray[4]), guestArray[5]);
+                Guest[] savedGuests = new Guest[TotalLines()];
+                using var reader = new StreamReader(DataFileName); // sikrer lukning ved fejl
+                string input = reader.ReadLine();
+                int guestNumber = 0;
+                while (input != null)
+                {
+                    string[] guestArray = input.Split(';');
+                    Guest readGuest = new(
+                    guestArray[0], guestArray[1], guestArray[2], DateTime.Parse(guestArray[3]), bool.Parse(guestArray[4]), guestArray[5]);
 
-                savedGuests[guestNumber] = readGuest;
-                guestNumber++;
+                    savedGuests[guestNumber] = readGuest;
+                    guestNumber++;
 
-                input = reader.ReadLine();
+                    input = reader.ReadLine();
 
+                }
+                return savedGuests;
             }
-            return savedGuests;
-            
+            else
+            {
+                return Array.Empty<Guest>();
+            }
+
+
         }
 
     }

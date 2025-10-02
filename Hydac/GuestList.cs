@@ -83,15 +83,24 @@ namespace Hydac
         {
             Console.WriteLine("Gæsteliste:");
             Console.WriteLine("0. Tilbage");
-            for (int i = 1; i < guestCount; i++)
+            if (guestCount <= 1)
             {
-                Console.Write(
-                    $"{i}. {Guests[i].FirstName} {Guests[i].LastName} Firma: {Guests[i].Company} Dato: {Guests[i].DateAndTime.ToString("dd/mm/yyyy")} Ankomst: {Guests[i].DateAndTime.ToString("HH:mm")} Ansvarlig for besøg: {Guests[i].ResponsibleEmployee} "
-                    );
-                switch (Guests[i].SafetyfolderGiven) { case true: Console.WriteLine("Sikkerhedsfolder udleveret "); break; case false: Console.WriteLine("Sikkerhedsfolder ikke udleveret "); break; }
+                for (int i = 1; i < guestCount; i++)
+                {
+                    Console.Write(
+                        $"{i}. {Guests[i].FirstName} {Guests[i].LastName} Firma: {Guests[i].Company} Dato: {Guests[i].DateAndTime.ToString("dd/mm/yyyy")} Ankomst: {Guests[i].DateAndTime.ToString("HH:mm")} Ansvarlig for besøg: {Guests[i].ResponsibleEmployee} "
+                        );
+                    switch (Guests[i].SafetyfolderGiven) { case true: Console.WriteLine("Sikkerhedsfolder udleveret "); break; case false: Console.WriteLine("Sikkerhedsfolder ikke udleveret "); break; }
+                }
+                Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
+                Console.ReadLine();
             }
-            Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
-            Console.ReadLine();
+            else if (guestCount < 1)
+            {
+                Console.WriteLine("Der er ingen gæster registreret.");
+                Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
+                Console.ReadLine();
+            }
         }
 
         public int SelectMenuItem()
