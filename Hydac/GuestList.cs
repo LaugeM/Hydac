@@ -80,7 +80,7 @@ namespace Hydac
         {
             Console.WriteLine("Gæsteliste:");
             Console.WriteLine("0. Tilbage");
-            if (guestCount >= 1)
+            if (guestCount > 1)
             {
                 for (int i = 1; i < guestCount; i++)
                 {
@@ -92,12 +92,20 @@ namespace Hydac
                 Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
                 Console.ReadLine();
             }
-            else if (guestCount < 1)
+            else
             {
                 Console.WriteLine("Der er ingen gæster registreret.");
                 Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
                 Console.ReadLine();
             }
+            /*
+            else if (guestCount <= 1)
+            {
+                Console.WriteLine("Der er ingen gæster registreret.");
+                Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
+                Console.ReadLine();
+            }
+            */
         }
 
         public int SelectMenuItem()

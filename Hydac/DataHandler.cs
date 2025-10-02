@@ -53,7 +53,8 @@ namespace Hydac
             if (TotalLines() > 0)
             {
                 Guest[] savedGuests = new Guest[TotalLines()];
-                using var reader = new StreamReader(DataFileName); // sikrer lukning ved fejl
+                StreamReader reader = new StreamReader(DataFileName);
+                //using var reader = new StreamReader(DataFileName); // sikrer lukning ved fejl
                 string input = reader.ReadLine();
                 int guestNumber = 0;
                 while (input != null)
@@ -68,6 +69,7 @@ namespace Hydac
                     input = reader.ReadLine();
 
                 }
+                reader.Close();
                 return savedGuests;
             }
             else
