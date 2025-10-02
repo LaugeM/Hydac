@@ -33,11 +33,18 @@ namespace Hydac
 
         public int TotalLines()
         {
-            using (StreamReader r = new StreamReader(DataFileName))
+            try
             {
-                int i = 0;
-                while (r.ReadLine() != null) { i++; }
-                return i;
+                using (StreamReader r = new StreamReader(DataFileName))
+                {
+                    int i = 0;
+                    while (r.ReadLine() != null) { i++; }
+                    return i;
+                }
+            }
+            catch (Exception e)
+            {
+                return 0;
             }
         }
         
