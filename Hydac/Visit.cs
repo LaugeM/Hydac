@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hydac
 {
-    internal class Guest
+    internal class Visit
     {
         
         public string FirstName { get; set; }
@@ -18,7 +18,7 @@ namespace Hydac
 
 
 
-        public Guest(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string responsibleEmployee)
+        public Visit(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string responsibleEmployee)
         {
             this.FirstName = firstName;
             this.LastName = lastName;

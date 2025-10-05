@@ -18,12 +18,12 @@ namespace Hydac
             _dataFileName = dataFileName;
         }
 
-        public void SaveGuest(Guest guest)
+        public void SaveGuest(Visit visit)
         {
             try
             {
                 using var writer = new StreamWriter(DataFileName, append: true);
-                writer.WriteLine(guest.MakeTitle());
+                writer.WriteLine(visit.MakeTitle());
             }
 
             catch (Exception e)
@@ -48,33 +48,33 @@ namespace Hydac
             }
         }
         
-        public Guest[] LoadList()
+        public Visit[] LoadList()
         {
             if (TotalLines() > 0)
             {
-                Guest[] savedGuests = new Guest[TotalLines()];
+                Visit[] savedVisits = new Visit[TotalLines()];
                 StreamReader reader = new StreamReader(DataFileName);
                 //using var reader = new StreamReader(DataFileName); // sikrer lukning ved fejl
                 string input = reader.ReadLine();
                 int guestNumber = 0;
                 while (input != null)
                 {
-                    string[] guestArray = input.Split(';');
-                    Guest readGuest = new(
-                    guestArray[0], guestArray[1], guestArray[2], DateTime.Parse(guestArray[3]), bool.Parse(guestArray[4]), guestArray[5]);
+                    string[] visitArray = input.Split(';');
+                    Visit readGuest = new(
+                    visitArray[0], visitArray[1], visitArray[2], DateTime.Parse(visitArray[3]), bool.Parse(visitArray[4]), visitArray[5]);
 
-                    savedGuests[guestNumber] = readGuest;
+                    savedVisits[guestNumber] = readGuest;
                     guestNumber++;
 
                     input = reader.ReadLine();
 
                 }
                 reader.Close();
-                return savedGuests;
+                return savedVisits;
             }
             else
             {
-                return Array.Empty<Guest>();
+                return Array.Empty<Visit>();
             }
 
 

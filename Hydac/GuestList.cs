@@ -19,17 +19,17 @@ namespace Hydac
             Initials = initials;
         }
 
-        private int guestCount = 1;
-        private Guest[] Guests = new Guest[50];
+        private int visitCount = 1;
+        private Visit[] Visits = new Visit[50];
         public void AddGuestsFromFile()
         {
-            Array.Clear(Guests, 0, Guests.Length);
-            guestCount = 1;
+            Array.Clear(Visits, 0, Visits.Length);
+            visitCount = 1;
             DataHandler initialHandler = new("GuestList.txt");
-            foreach (Guest g in initialHandler.LoadList())
+            foreach (Visit v in initialHandler.LoadList())
             {
-                Guests[guestCount] = g;
-                guestCount++;
+                Visits[visitCount] = v;
+                visitCount++;
             }
         }
 
@@ -64,32 +64,32 @@ namespace Hydac
 
             var dateAndTime = DateTime.Now;
 
-            AddGuest(inputFirstName, inputLastName, inputCompany, dateAndTime, _safetyfolderGiven, Initials);
+            AddVisit(inputFirstName, inputLastName, inputCompany, dateAndTime, _safetyfolderGiven, Initials);
             
 
         }
 
-        public void AddGuest(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string currentEmployee)
+        public void AddVisit(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string currentEmployee)
         {
-            Guest gu = new Guest(firstName, lastName, company, dateAndTime, safetyfolderGiven, currentEmployee);
+            Visit vi = new Visit(firstName, lastName, company, dateAndTime, safetyfolderGiven, currentEmployee);
             DataHandler handler = new DataHandler("GuestList.txt");
-            handler.SaveGuest(gu);
-            this.Guests[guestCount] = gu;
-            this.guestCount++;
+            handler.SaveGuest(vi);
+            this.Visits[visitCount] = vi;
+            this.visitCount++;
         }
 
         public void Show()
         {
             Console.WriteLine("Gæsteliste:");
             Console.WriteLine("0. Tilbage");
-            if (guestCount > 1)
+            if (visitCount > 1)
             {
-                for (int i = 1; i < guestCount; i++)
+                for (int i = 1; i < visitCount; i++)
                 {
                     Console.Write(
-                        $"{i}. {Guests[i].FirstName} {Guests[i].LastName} Firma: {Guests[i].Company} Dato: {Guests[i].DateAndTime.ToString("dd/mm/yyyy")} Ankomst: {Guests[i].DateAndTime.ToString("HH:mm")} Ansvarlig for besøg: {Guests[i].ResponsibleEmployee} "
+                        $"{i}. {Visits[i].FirstName} {Visits[i].LastName} Firma: {Visits[i].Company} Dato: {Visits[i].DateAndTime.ToString("dd/mm/yyyy")} Ankomst: {Visits[i].DateAndTime.ToString("HH:mm")} Ansvarlig for besøg: {Visits[i].ResponsibleEmployee} "
                         );
-                    switch (Guests[i].SafetyfolderGiven) { case true: Console.WriteLine("Sikkerhedsfolder udleveret "); break; case false: Console.WriteLine("Sikkerhedsfolder ikke udleveret "); break; }
+                    switch (Visits[i].SafetyfolderGiven) { case true: Console.WriteLine("Sikkerhedsfolder udleveret "); break; case false: Console.WriteLine("Sikkerhedsfolder ikke udleveret "); break; }
                 }
                 Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
                 Console.ReadLine();
@@ -116,12 +116,12 @@ namespace Hydac
             {
                 int userSelection;
                 bool selectionIsNumber = int.TryParse(Console.ReadLine(), out userSelection);
-                if (selectionIsNumber && userSelection <= this.guestCount)
+                if (selectionIsNumber && userSelection <= this.visitCount)
                 {
                     return userSelection;
                 }
 
-                Console.WriteLine($"Vælg et tal mellem 1 og {this.guestCount} eller afslut ved at vælge 0.");
+                Console.WriteLine($"Vælg et tal mellem 1 og {this.visitCount} eller afslut ved at vælge 0.");
 
             }
         }
