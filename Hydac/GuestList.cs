@@ -11,6 +11,8 @@ namespace Hydac
     {
         public string Title { get; set; }
         public string Initials { get; set; }
+
+        public Employee currentEmployee { get; }
         public GuestList(string menuTitle, string initials)
         {
             Title = menuTitle;
@@ -67,9 +69,9 @@ namespace Hydac
 
         }
 
-        public void AddGuest(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string responsibleEmployee)
+        public void AddGuest(string firstName, string lastName, string company, DateTime dateAndTime, bool safetyfolderGiven, string currentEmployee)
         {
-            Guest gu = new Guest(firstName, lastName, company, dateAndTime, safetyfolderGiven, responsibleEmployee);
+            Guest gu = new Guest(firstName, lastName, company, dateAndTime, safetyfolderGiven, currentEmployee);
             DataHandler handler = new DataHandler("GuestList.txt");
             handler.SaveGuest(gu);
             this.Guests[guestCount] = gu;

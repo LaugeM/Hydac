@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Indtast dine initialer");
-            string initials = Console.ReadLine();
-            GuestList guestList = new GuestList("Gæsteliste", initials);
+            Employee currentEmployee = new Employee(Console.ReadLine());
+            GuestList guestList = new GuestList("Gæsteliste", currentEmployee.Initials);
             Menu mainMenu = new Menu("Hovedmenu");
 
             mainMenu.AddMenuItem("Gæster");
