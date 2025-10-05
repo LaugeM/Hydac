@@ -12,7 +12,6 @@ namespace Hydac
         public string Title { get; set; }
         public string Initials { get; set; }
 
-        public Employee currentEmployee { get; }
         public GuestList(string menuTitle, string initials)
         {
             Title = menuTitle;
