@@ -8,12 +8,14 @@ namespace Hydac
 {
     internal class Visit
     {
+
+        private bool _safetyfolderGiven;
         
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Company { get; set; }
         public DateTime DateAndTime { get; set; }
-        public bool SafetyfolderGiven { get; set; }
+        public bool SafetyfolderGiven { get { return _safetyfolderGiven; } }
         public string ResponsibleEmployee { get; set; }
 
 
@@ -24,7 +26,7 @@ namespace Hydac
             this.LastName = lastName;
             this.Company = company;
             this.DateAndTime = dateAndTime;
-            this.SafetyfolderGiven = safetyfolderGiven;
+            this._safetyfolderGiven = safetyfolderGiven;
             this.ResponsibleEmployee = responsibleEmployee;
         }
 

@@ -99,14 +99,8 @@ namespace Hydac
                 Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
                 Console.ReadLine();
             }
-            /*
-            else if (guestCount <= 1)
-            {
-                Console.WriteLine("Der er ingen gæster registreret.");
-                Console.WriteLine("Klik på en vilkårlig tast for at gå tilbage");
-                Console.ReadLine();
-            }
-            */
+
+
         }
 
         public int SelectMenuItem()
